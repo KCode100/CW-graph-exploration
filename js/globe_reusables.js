@@ -371,12 +371,12 @@ function score_card() {
 			.on('click', function () {
 				var my_svg = d3.select('#globe_div_svg');
 				window.open(
-					'pop_up.html',
-					'_self',
-					'toolbar=no,scrollbars=no,resizable=no,top=50,left=50,width=' +
-						(+my_svg.attr('width') - 100) +
-						',height=' +
-						(+my_svg.attr('height') - 100)
+					'region_view.html?region=' +
+						this.parentNode
+							.querySelector('text.card_title')
+							.textContent.replace(/ /g, '_') +
+						'&colour=undefined',
+					'_self'
 				);
 			});
 
@@ -1274,7 +1274,7 @@ function region_view() {
 				var my_iso = my_data.find(
 					(f) => f.country === d.properties.name
 				).geocode;
-				window.open('country_view.html?country=' + my_iso);
+				window.open('country_view.html?country=' + my_iso, '_self');
 			});
 
 		map_group.attr(

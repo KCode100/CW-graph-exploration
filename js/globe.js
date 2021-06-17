@@ -312,6 +312,11 @@ function fill_countries(my_data, card_list) {
 			})
 			.on('click', function (d) {
 				globe.rotationOn = false;
+				console.log(
+					globe.stored_regions[this.id].replace(/ /g, '_') +
+						'&colour=' +
+						range_to_index[region_index]
+				);
 				window.open(
 					'region_view.html?region=' +
 						globe.stored_regions[this.id].replace(/ /g, '_') +

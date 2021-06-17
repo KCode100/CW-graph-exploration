@@ -1,0 +1,19 @@
+Code,Category,Dataset,Description,Source,Weight
+D.1.1,Education,Enrolment in Secondary Education,"Total (gross) enrolment in secondary education, regardless of age, expressed as a percentage of the population of official secondary education age. ",UNESCO,7.5
+D.1.2,Education,Literacy Rate ,Percentage of people 15-24 year olds,UNESCO,10
+D.1.3,Education,Digital Natives,Percentage of people 15-24 year olds,ITU,7.5
+D.2.1,Health and Wellbeing,Youth Mortality,"Rate per 100,000 of 15-29 year olds",IHME,10
+D.2.2,Health and Wellbeing,Mental Disorder YLL,"Years Life Lost per 100,000 of 15-29 year olds",GBD,3
+D.2.3,Health and Wellbeing,Alcohol Abuse YLL ,"Years Life Lost per 100,000 of 15-29 year olds",GBD,3
+D.2.4,Health and Wellbeing,Drug Abuse YLL ,"Years Life Lost per 100,000 of 15-29 year olds",GBD,3
+D.2.5,Health and Wellbeing,HIV Rate ,Percentage of youth infected with HIV 15-24 year olds,World Bank,3
+D.2.6,Health and Wellbeing,Global Wellbeing Index,"Gallup Weighted Score of Wellbeing of five domains: purpose, social, financial, community and physical of 15-29 year olds",Gallup World Poll,3
+D.3.1,Employment and Opportunity,NEET,"Percentage of youth not in education, employment or training (NEET) 15-29 year olds","ILO, WDR, OECD",10
+D.3.2,Employment and Opportunity,Youth Unemployment Ratio,"Ratio of youth unemployment rate to adult unemployment rate, both sexes 15-24 year olds",UNDATA,5
+D.3.3,Employment and Opportunity,Adolescent fertility rate,"Births per 1,000 females in ages 15-19 year olds",World Bank,5
+D.3.4,Employment and Opportunity,Account at a financial institution,Percentage of people 15-24 with an account at a formal financial institution,World Bank Findex,5
+D.4.1,Political Participation,Existence of a Youth Policy,"All Ages, 1 = Existing Youth Policy, 0.5 = In Development/Draft, 0 = No Youth Policy",Youth Policy Labs,5
+D.4.2,Political Participation,Voter Education,"At the national level, how often are voter education programs conducted? All ages, 1 = Continuously, 0.5 = Election Time Only, 0.25 = Other, 0 = No information/not applicable",ACE Electoral Knowledge Network,5
+D.4.3,Political Participation,Voiced Opinion to Official ,"Percentage answering ""Yes"" 15-29 year olds",Gallup World Poll,5
+D.5.1,Civic Participation,Volunteered Time ,"Percentage answering ""Yes"" 15-29 year olds",Gallup World Poll,5
+D.5.2,Civic Participation,Helped a Stranger ,"Percentage answering ""Yes"" 15-29 year olds",Gallup World Poll,5

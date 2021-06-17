@@ -1,0 +1,28 @@
+<html>
+	<link rel="stylesheet" href="css/globe.css" />
+	<head>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+		<meta charset="utf-8" />
+	</head>
+
+	<body>
+		<div id="globe_div"></div>
+
+		<script src="js/globe_properties.js"></script>
+		<script src="js/globe_reusables.js"></script>
+		<script src="js/globe.js"></script>
+	</body>
+	<script>
+		var promises = [];
+
+		promises.push(d3.json('data/world_countries.json'));
+		promises.push(d3.csv('data/hl_ydi_scores.csv'));
+
+		Promise.all(promises).then(ready);
+
+		function ready(map_data) {
+			initialise_globe(map_data[0], map_data[1]);
+		}
+	</script>
+</html>

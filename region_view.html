@@ -1,0 +1,56 @@
+
+<html>
+
+<link rel="stylesheet" href="css/globe.css">
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+<head>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+<div id="region_div"></div>
+<div class="tooltip"></div>
+
+<script src="js/globe_properties.js"></script>
+<script src="js/globe_reusables.js"></script>
+<script src="js/globe.js"></script>
+</body>
+<script>
+
+    var promises = [];
+
+    promises.push(d3.json("data/world_countries.json"));
+    promises.push(d3.csv("data/hl_ydi_scores.csv"));
+
+    Promise.all(promises).then(ready);
+
+    function ready(all_data){
+
+        var tags = document.URL.split("?")[1].split("&");
+        var region = tags[0].split("=")[1];
+        var my_colour = tags[1].split("=")[1];
+        var my_data = all_data[1].filter(f => f.region.trim() === region.replace(/_/g,' '));
+
+        var svg = draw_svg("region_div");
+        var width = +svg.attr("width");
+        var height = +svg.attr("height");
+        var margins = {"left":20,"right":20,"top":50,"bottom":20}
+
+        var my_chart = region_view()
+            .width(width)
+            .height(height)
+            .map_data(all_data[0])
+            .my_data(my_data)
+            .margins(margins)
+            .map_colour_range(my_colour)
+            .my_class("region_view")
+            .my_region(region.replace(/_/g,' '));
+
+        my_chart(svg);
+
+    };
+</script>
+
+</html>

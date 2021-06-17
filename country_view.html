@@ -1,0 +1,62 @@
+<html>
+	<link rel="stylesheet" href="css/globe.css" />
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="/css/style.css" />
+	</head>
+
+	<body>
+		<div class="grid">
+			<div class="span">
+				<div class="box txtc">By Country Page</div>
+			</div>
+			<div id="country_div"></div>
+			<div class="tooltip"></div>
+			<div class="span">
+				<div class="box txtc">Footer</div>
+			</div>
+		</div>
+
+		<script src="js/globe_properties.js"></script>
+		<script src="js/globe_reusables.js"></script>
+		<script src="js/globe.js"></script>
+	</body>
+	<script>
+		var promises = [];
+
+		promises.push(d3.json('data/world_countries.json'));
+		promises.push(d3.csv('data/ydi_detailed_data.csv'));
+		promises.push(d3.csv('data/hl_ydi_scores.csv'));
+
+		Promise.all(promises).then(ready);
+
+		function ready(all_data) {
+			var tags = document.URL.split('?')[1].split('&');
+			var iso3 = tags[0].split('=')[1];
+			var country = all_data[2].find((f) => f.geocode === iso3).country;
+			var my_data = all_data[1].filter((f) => f.Iso3 === iso3);
+			var overall_data = all_data[2].filter(
+				(f) =>
+					f.geocode === iso3 && f.variablename === 'YDI Overall Score'
+			);
+			var svg = draw_svg('country_div');
+			var width = +svg.attr('width');
+			var height = +svg.attr('height');
+			var margins = { left: 20, right: 20, top: 20, bottom: 20 };
+
+			var my_chart = country_view()
+				.width(width)
+				.height(height)
+				.map_data(all_data[0])
+				.my_data(my_data)
+				.overall_data(overall_data)
+				.margins(margins)
+				.my_class('country_view')
+				.my_country(country);
+
+			my_chart(svg);
+		}
+	</script>
+</html>

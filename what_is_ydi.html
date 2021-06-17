@@ -1,0 +1,42 @@
+
+<html>
+
+<link rel="stylesheet" href="css/globe.css">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+<head>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+<div id="ydi_div"></div>
+<div class="tooltip"></div>
+
+<script src="js/globe_properties.js"></script>
+<script src="js/globe_reusables.js"></script>
+<script src="js/globe.js"></script>
+</body>
+<script>
+    d3.csv("data/what_is_ydi.csv",function(my_data){
+
+        var svg = draw_svg("ydi_div");
+        var width = +svg.attr("width");
+        var height = +svg.attr("height");
+        var margin = {"left":300,"right":100,"top":120,"bottom":30}
+        var my_chart = tree_map()
+            .width(width-margin.left-margin.right)
+            .height(height-margin.top-margin.bottom)
+            .my_data(my_data)
+            .start_x(margin.left)
+            .start_y(margin.top)
+            .left_rect_width(280)
+            .right_rect_width(80)
+            .colour_range(globe.colours);
+
+        my_chart(svg);
+
+    });
+</script>
+
+</html>

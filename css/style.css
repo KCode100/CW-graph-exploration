@@ -882,6 +882,15 @@ article p {
 		padding: 24px;
 	}
 }
+ul {
+	columns: 2;
+	-webkit-columns: 2;
+	-moz-columns: 2;
+	list-style: none;
+}
+li {
+	margin: 10px;
+}
 /* 
 /* This is just Hoisin's sample page styles
 /* You can remove this and delete the _sample.scss

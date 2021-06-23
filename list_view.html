@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<div class="grid" style="text-align: center">
+			<div class="span">
+				<div class="box txtc">Country Page</div>
+			</div>
+			<ul class="country-list"></ul>
+			<div class="span">
+				<div class="box txtc">Footer</div>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		const listEl = document.querySelector('.country-list');
+
+		fetch('data/world_countries.json')
+			.then(function (resp) {
+				return resp.json();
+			})
+			.then(function (data) {
+				let i = 0;
+				const countriesLength = data.features.length;
+				let countryList = [];
+				for (; i < countriesLength; i++) {
+					listEl.innerHTML += `
+                        <li><a href = "country_view.html?country=${data.features[i].id}">${data.features[i].properties.name}</a>
+                    `;
+				}
+			});
+	</script>
+</html>

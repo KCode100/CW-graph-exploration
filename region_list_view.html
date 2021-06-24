@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<style>
+			li {
+				text-decoration: underline;
+			}
+			li:hover {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="grid" style="text-align: center">
+			<div class="span">
+				<div class="box txtc">Country Page</div>
+			</div>
+			<ul class="region-list">
+				<li id="South_Asia">South Asia</li>
+				<li id="North_America">North America</li>
+				<li id="East_Asia_and_Pacific">East Asia And Pacific</li>
+				<li id="Sub-Saharan_Africa">Sub-Saharan_Africa</li>
+				<li id="Middle_East_and_North_Africa">
+					Middle East and North Africa
+				</li>
+				<li id="Latin_America_and_Caribbean">
+					Latin America and Caribbean
+				</li>
+				<li id="Europe_and_Central_Asia">Europe and Central Asia</li>
+			</ul>
+			<div class="span">
+				<div class="box txtc">Footer</div>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		const regions = document.querySelectorAll('li');
+		regions.forEach((region) => {
+			region.addEventListener('click', function () {
+				window.open(
+					`region_view.html?region=${this.id}&colour=undefined`,
+					'_self'
+				);
+			});
+		});
+	</script>
+</html>

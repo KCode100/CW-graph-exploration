@@ -375,7 +375,8 @@ function score_card() {
 						this.parentNode
 							.querySelector('text.card_title')
 							.textContent.replace(/ /g, '_') +
-						'&colour=undefined'
+						'&colour=undefined',
+					'_self'
 				);
 			});
 
